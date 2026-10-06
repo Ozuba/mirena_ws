@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bclyhf4ovdjyf"]
+
+[ext_resource type="Script" uid="uid://cq74fmc8nei0w" path="res://Scenes/Track/Cone/cone.gd" id="1_0u5f0"]
+[ext_resource type="ArrayMesh" uid="uid://dh5mqs7sykubf" path="res://Assets/Models/Cone/Meshes/BCone.res" id="2_ijuo8"]
+[ext_resource type="Shape3D" uid="uid://bl7w54xfjeqjn" path="res://Assets/Models/Cone/Meshes/collider.tres" id="3_f0iag"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qppwo"]
+friction = 0.4
+bounce = 0.4
+
+[node name="Cone" type="RigidBody3D" groups=["Cones"]]
+collision_layer = 32770
+collision_mask = 32770
+mass = 0.3
+physics_material_override = SubResource("PhysicsMaterial_qppwo")
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, 0.2, 0)
+max_contacts_reported = 1
+script = ExtResource("1_0u5f0")
+
+[node name="Model" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_ijuo8")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+shape = ExtResource("3_f0iag")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,302 @@
+[gd_scene format=3 uid="uid://ne6yuaaeiar8"]
+
+[ext_resource type="Script" uid="uid://dl0k82cq0p7ky" path="res://Scenes/Sim/UI/sim_ui.gd" id="1_lfjlq"]
+[ext_resource type="Script" uid="uid://ba6w2edq6k5dp" path="res://Scenes/Sim/UI/controls_label.gd" id="2_hox2s"]
+[ext_resource type="Script" uid="uid://dtnf8qsbtrk07" path="res://Scenes/Sim/UI/stats.gd" id="2_o5cjj"]
+[ext_resource type="Script" uid="uid://btpbxj5260gcn" path="res://Scenes/Sim/UI/vehicle_menu.gd" id="3_xhllv"]
+[ext_resource type="Script" uid="uid://t2c8u12dg5bk" path="res://Scenes/Sim/track_menu.gd" id="3_xmg1i"]
+
+[sub_resource type="GDScript" id="GDScript_xhllv"]
+script/source = "extends PanelContainer
+	
+func _ready() -> void:
+	print(\"main menu ready\")
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_0tiax"]
+font_size = 22
+font_color = Color(0.744876, 0.999331, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_val13"]
+
+[node name="SimUI" type="Control" unique_id=2132864431]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lfjlq")
+
+[node name="Stats" type="PanelContainer" parent="." unique_id=1504225956]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -122.0
+offset_bottom = 97.0
+grow_horizontal = 0
+script = ExtResource("2_o5cjj")
+
+[node name="MarginContainer" type="MarginContainer" parent="Stats" unique_id=1479226356]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Stats/MarginContainer" unique_id=2073894066]
+layout_mode = 2
+
+[node name="FpsLabel" type="Label" parent="Stats/MarginContainer/VBoxContainer" unique_id=1010176785]
+layout_mode = 2
+text = "FPS:"
+
+[node name="TimerLabel" type="Label" parent="Stats/MarginContainer/VBoxContainer" unique_id=1047921344]
+layout_mode = 2
+text = "Timer:"
+
+[node name="FallenConesLabel" type="Label" parent="Stats/MarginContainer/VBoxContainer" unique_id=1668494678]
+layout_mode = 2
+text = "Fallen Cones:"
+
+[node name="MainMenu" type="PanelContainer" parent="." unique_id=527270208]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 320.0
+offset_bottom = 520.0
+script = SubResource("GDScript_xhllv")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu" unique_id=1022736181]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/MarginContainer" unique_id=1895002308]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MenuTitle" type="Label" parent="MainMenu/MarginContainer/VBoxContainer" unique_id=1594969294]
+layout_mode = 2
+text = "Options Menu"
+label_settings = SubResource("LabelSettings_0tiax")
+
+[node name="MenuTabs" type="TabContainer" parent="MainMenu/MarginContainer/VBoxContainer" unique_id=1858219786]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="VEHICLE" type="MarginContainer" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs" unique_id=1780155961]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("3_xhllv")
+metadata/_tab_index = 0
+
+[node name="Vehicle" type="VBoxContainer" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE" unique_id=1756001699]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="PilotSelector" type="HBoxContainer" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE/Vehicle" unique_id=804804314]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE/Vehicle/PilotSelector" unique_id=1451648093]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "PILOT"
+
+[node name="PilotMode" type="OptionButton" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE/Vehicle/PilotSelector" unique_id=1606553936]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_force_pass_scroll_events = false
+selected = 1
+allow_reselect = true
+item_count = 4
+popup/item_0/text = "Manual"
+popup/item_0/id = 0
+popup/item_1/text = "ROS2"
+popup/item_1/id = 1
+popup/item_2/text = "FollowTrack"
+popup/item_2/id = 2
+popup/item_3/text = "NoPilot"
+popup/item_3/id = 3
+
+[node name="ResetCarButton" type="Button" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE/Vehicle" unique_id=599819201]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_val13")
+text = "Reset Car Position"
+
+[node name="AsStatus" type="VBoxContainer" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE/Vehicle" unique_id=1784271774]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE/Vehicle/AsStatus" unique_id=69039004]
+layout_mode = 2
+text = "AS_STATUS:"
+
+[node name="StateSelector" type="HBoxContainer" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE/Vehicle/AsStatus" unique_id=667962896]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE/Vehicle/AsStatus/StateSelector" unique_id=179886042]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "STATE:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="State" type="OptionButton" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE/Vehicle/AsStatus/StateSelector" unique_id=1126441793]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_force_pass_scroll_events = false
+selected = 0
+allow_reselect = true
+item_count = 5
+popup/item_0/text = "AS_OFF"
+popup/item_0/id = 1
+popup/item_1/text = "AS_READY"
+popup/item_1/id = 2
+popup/item_2/text = "AS_DRIVING"
+popup/item_2/id = 3
+popup/item_3/text = "AS_FINISHED"
+popup/item_3/id = 5
+popup/item_4/text = "AS_EMERGENCY"
+popup/item_4/id = 4
+
+[node name="MissionSelector" type="HBoxContainer" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE/Vehicle/AsStatus" unique_id=740860849]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE/Vehicle/AsStatus/MissionSelector" unique_id=180471293]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "MISSION:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mission" type="OptionButton" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE/Vehicle/AsStatus/MissionSelector" unique_id=1129771903]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_force_pass_scroll_events = false
+selected = 0
+allow_reselect = true
+item_count = 7
+popup/item_0/text = "MISSION_NONE"
+popup/item_0/id = 0
+popup/item_1/text = "ACCELERATION"
+popup/item_1/id = 1
+popup/item_2/text = "SKIDPAD"
+popup/item_2/id = 2
+popup/item_3/text = "AUTOCROSS"
+popup/item_3/id = 6
+popup/item_4/text = "TRACKDRIVE"
+popup/item_4/id = 3
+popup/item_5/text = "BRAKE_TEST"
+popup/item_5/id = 4
+popup/item_6/text = "INSPECTION"
+popup/item_6/id = 5
+
+[node name="MissionStatus" type="VBoxContainer" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE/Vehicle" unique_id=1723025116]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE/Vehicle/MissionStatus" unique_id=432404192]
+layout_mode = 2
+text = "STATUS: "
+
+[node name="TRACK" type="MarginContainer" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs" unique_id=1626101123]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("3_xmg1i")
+metadata/_tab_index = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK" unique_id=1260263345]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK/HBoxContainer" unique_id=687881883]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="GenerateTrack" type="Button" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK/HBoxContainer/VBoxContainer" unique_id=2111812978]
+layout_mode = 2
+text = "Generate Track
+"
+
+[node name="ClearTrack" type="Button" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK/HBoxContainer/VBoxContainer" unique_id=2043538290]
+layout_mode = 2
+text = "Clear Track"
+
+[node name="OpenTrack" type="Button" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK/HBoxContainer/VBoxContainer" unique_id=1531126950]
+layout_mode = 2
+text = "Open Track"
+
+[node name="ExportTrack" type="Button" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK/HBoxContainer/VBoxContainer" unique_id=1531126951]
+layout_mode = 2
+text = "Export Track"
+
+[node name="EnableConeCollision" type="CheckButton" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK/HBoxContainer/VBoxContainer" unique_id=258316078]
+layout_mode = 2
+text = "Enable Cone Collision"
+
+[node name="TrackStats" type="Label" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK/HBoxContainer/VBoxContainer" unique_id=2111812979]
+layout_mode = 2
+text = "No track generated"
+autowrap_mode = 2
+
+[node name="FileDialog" type="FileDialog" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK" unique_id=1697685901]
+oversampling_override = 1.0
+title = "Open a File"
+initial_position = 2
+file_mode = 0
+display_mode = 1
+root_subfolder = "TrackFiles"
+
+[node name="ExportDialog" type="FileDialog" parent="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK" unique_id=1697685902]
+oversampling_override = 1.0
+title = "Export the track as JSON"
+initial_position = 2
+ok_button_text = "Export"
+display_mode = 1
+root_subfolder = "TrackFiles"
+filters = PackedStringArray("*.json ; Track files")
+
+[node name="ControlsLabel" type="Label" parent="." unique_id=1827473245]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -33.0
+offset_right = 103.0
+offset_bottom = -10.0
+grow_vertical = 0
+text = "Initializing..."
+script = ExtResource("2_hox2s")
+
+[connection signal="item_selected" from="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE/Vehicle/PilotSelector/PilotMode" to="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE" method="_on_pilot_mode_item_selected"]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE/Vehicle/ResetCarButton" to="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE" method="_on_reset_car_button_pressed"]
+[connection signal="item_selected" from="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE/Vehicle/AsStatus/StateSelector/State" to="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE" method="_on_as_state_item_selected"]
+[connection signal="item_selected" from="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE/Vehicle/AsStatus/MissionSelector/Mission" to="MainMenu/MarginContainer/VBoxContainer/MenuTabs/VEHICLE" method="_on_mission_item_selected"]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK/HBoxContainer/VBoxContainer/GenerateTrack" to="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK" method="_on_generate_track"]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK/HBoxContainer/VBoxContainer/ClearTrack" to="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK" method="_on_clear_track_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK/HBoxContainer/VBoxContainer/OpenTrack" to="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK" method="_on_open_track_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK/HBoxContainer/VBoxContainer/ExportTrack" to="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK" method="_on_export_track_pressed"]
+[connection signal="toggled" from="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK/HBoxContainer/VBoxContainer/EnableConeCollision" to="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK" method="_on_enable_cone_collision_toggled"]
+[connection signal="file_selected" from="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK/FileDialog" to="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK" method="_on_track_file_selected"]
+[connection signal="file_selected" from="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK/ExportDialog" to="MainMenu/MarginContainer/VBoxContainer/MenuTabs/TRACK" method="_on_export_file_selected"]

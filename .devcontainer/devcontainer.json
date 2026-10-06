@@ -1,0 +1,20 @@
+{
+  "name": "Development Mirena Workspace ",
+  "dockerComposeFile": "../docker/docker-compose.yml",
+  "service": "mirena_ws",
+  "workspaceFolder": "/home/mirena/mirena_ws",
+  "initializeCommand": "xhost +local:docker && xhost +local:root",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Ranch-Hand-Robotics.rde-ros-2",
+        "ms-python.python",
+        "ms-vscode.cpptools-extension-pack"
+      ],
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/zsh",
+        "ROS2.distro": "jazzy"
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bgdafh7stxdw8"]
+
+[ext_resource type="Script" uid="uid://b1a0trwki4qjj" path="res://Scenes/Sim/sim_env.gd" id="1_3f2tq"]
+[ext_resource type="PackedScene" uid="uid://bdosnwuuwheyu" path="res://Scenes/Track/Track.tscn" id="1_638e3"]
+[ext_resource type="PackedScene" uid="uid://lnlv7w6dktqx" path="res://Scenes/Vehicle/mirena_car.tscn" id="2_cv8nj"]
+[ext_resource type="Script" uid="uid://diysurgbljif6" path="res://Scenes/FreeCam/freecam.gd" id="3_3f2tq"]
+[ext_resource type="Texture2D" uid="uid://bsboxptpn0imd" path="res://Assets/Textures/Sky/kloofendal_48d_partly_cloudy_puresky_2k.exr" id="4_720cc"]
+[ext_resource type="PackedScene" uid="uid://ne6yuaaeiar8" path="res://Scenes/Sim/UI/SimUI.tscn" id="5_iqvu6"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_k4cy8"]
+panorama = ExtResource("4_720cc")
+energy_multiplier = 2.0
+
+[sub_resource type="Sky" id="Sky_640h4"]
+sky_material = SubResource("PanoramaSkyMaterial_k4cy8")
+
+[sub_resource type="Environment" id="Environment_ohqor"]
+background_mode = 2
+background_color = Color(0.529412, 0.807843, 0.921569, 1)
+sky = SubResource("Sky_640h4")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_read_sky_light = false
+
+[node name="SimEnv" type="Node" unique_id=715448197]
+script = ExtResource("1_3f2tq")
+
+[node name="Track" parent="." unique_id=1264259550 instance=ExtResource("1_638e3")]
+
+[node name="Car" parent="." unique_id=908748782 instance=ExtResource("2_cv8nj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45950258, 0)
+pilot = 2
+
+[node name="SimUI" parent="." unique_id=2132864431 instance=ExtResource("5_iqvu6")]
+
+[node name="Freecam3D" type="Camera3D" parent="." unique_id=605701404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.61482, 7.76996)
+script = ExtResource("3_3f2tq")
+metadata/_custom_type_script = "uid://diysurgbljif6"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1030176260]
+environment = SubResource("Environment_ohqor")
+
+[connection signal="track_loaded" from="Track" to="Car" method="reset_position"]

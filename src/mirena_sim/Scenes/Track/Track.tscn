@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bdosnwuuwheyu"]
+
+[ext_resource type="Script" uid="uid://debauc1yix74" path="res://Scenes/Track/track.gd" id="1_0ld5s"]
+[ext_resource type="Material" uid="uid://bsv8ux5upf4hf" path="res://Assets/Textures/Asphalt/Asphalt.tres" id="1_okhpi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0do6f"]
+rough = true
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vfgym"]
+points = PackedVector3Array(-100, 0, -100, -100, 0, 100, 100, 0, -100, 100, 0, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wtm8k"]
+lightmap_size_hint = Vector2i(1002, 1002)
+material = ExtResource("1_okhpi")
+add_uv2 = true
+size = Vector2(200, 200)
+
+[sub_resource type="Curve3D" id="Curve3D_0ld5s"]
+
+[node name="Track" type="Node3D" unique_id=1525724335]
+script = ExtResource("1_0ld5s")
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=612580870]
+collision_layer = 32769
+collision_mask = 32769
+physics_material_override = SubResource("PhysicsMaterial_0do6f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1309672454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+top_level = true
+shape = SubResource("ConvexPolygonShape3D_vfgym")
+
+[node name="GroundMesh" type="MeshInstance3D" parent="Ground" unique_id=1413446312]
+mesh = SubResource("PlaneMesh_wtm8k")
+
+[node name="Gates" type="Node3D" parent="." unique_id=1017428353]
+
+[node name="TrackPath" type="Path3D" parent="." unique_id=222483402]
+curve = SubResource("Curve3D_0ld5s")

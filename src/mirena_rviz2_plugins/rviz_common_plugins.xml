@@ -1,0 +1,25 @@
+<library path="mirena_rviz2_plugins">
+  
+  <class name="mirena/EntityList" 
+         type="mirena::EntityListDisplay" 
+         base_class_type="rviz_common::Display">
+    <description>Displays a list of entities (cones, obstacles, etc.) from mirena_common.</description>
+    <message_type>mirena_common/msg/EntityList</message_type>
+  </class>
+
+  <class name="mirena/CarDisplay" 
+         type="mirena::CarDisplay" 
+         base_class_type="rviz_common::Display">
+    <description>Visualizes the car state and 3D model.</description>
+    <message_type>mirena_common/msg/Car</message_type>
+  </class>
+
+
+  <class name="mirena/Track" 
+         type="mirena::TrackDisplay" 
+         base_class_type="rviz_common::Display">
+    <description>Visualizes race track boundaries, centerline, and sectors.</description>
+    <message_type>mirena_common/msg/Track</message_type>
+  </class>
+
+</library>
