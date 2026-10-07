@@ -3,7 +3,7 @@
 A ROS 2 (Jazzy) workspace for Formula Student Driverless development, built around **MirenaSim**, a
 Godot 4 simulator that publishes the same interfaces as the real car.
 
-![MirenaSim](docs/_static/images/chase_cam.jpg)
+![MirenaSim](docs/_static/images/sim_banner.png)
 
 ## Packages
 
