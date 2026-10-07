@@ -12,9 +12,10 @@ ARG USER_UID=1000
 ARG USER_GID=1000
 
 ENV DEBIAN_FRONTEND=noninteractive \
-    LANG=en_US.UTF-8 \
-    LC_ALL=en_US.UTF-8 \
-    SHELL=/bin/zsh
+     PIP_BREAK_SYSTEM_PACKAGES=1 \
+     LANG=en_US.UTF-8 \
+     LC_ALL=en_US.UTF-8 \
+     SHELL=/bin/zsh
 
 # Keep downloaded packages in the BuildKit cache between builds
 RUN rm -f /etc/apt/apt.conf.d/docker-clean \

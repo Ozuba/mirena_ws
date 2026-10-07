@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cxrb8iam8llhk" path="res://addons/rclgd-sensors/ros_lidar/ros_lidar.gd" id="3_pdc0f"]
 [ext_resource type="Script" uid="uid://ds4q43s0n1ft7" path="res://addons/rclgd-sensors/ros_camera/ros_camera.gd" id="4_dflui"]
 [ext_resource type="Script" uid="uid://bsmemyc0nuhy2" path="res://addons/rclgd-sensors/ros_imu/ros_imu.gd" id="5_iwp33"]
+[ext_resource type="Script" uid="uid://c0hu800pgnmoh" path="res://addons/rclgd-sensors/ros_gps/ros_gps.gd" id="6_pdc0f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iwp33"]
 size = Vector3(1.440945, 3.0220528, 1.1161242)
@@ -194,6 +195,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_iifm0")
 
 [node name="RL_WHEEL" type="VehicleWheel3D" parent="." unique_id=2127290588]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.587, 0.208, 0.6)
+use_as_traction = true
 wheel_radius = 0.26
 wheel_rest_length = 0.05
 suspension_stiffness = 25.06
@@ -259,3 +261,10 @@ script = ExtResource("5_iwp33")
 frame_id = "car/imu"
 parent_frame_id = "car/cog"
 metadata/_custom_type_script = "uid://bsmemyc0nuhy2"
+
+[node name="RosGps" type="Node3D" parent="." unique_id=477230276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68356436, -1.208454)
+script = ExtResource("6_pdc0f")
+frame_id = "car/gps"
+parent_frame_id = "car/cog"
+metadata/_custom_type_script = "uid://c0hu800pgnmoh"
