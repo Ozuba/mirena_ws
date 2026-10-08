@@ -7,7 +7,7 @@ func _init():
 	init(ROS_TYPE_NAME)
 
 var header : RosStdMsgsHeader:
-	get: return get_member(&"header") as RosMsg
+	get: return get_member(&"header")
 	set(v): set_member(&"header", v)
 
 var height : int:
@@ -18,7 +18,7 @@ var width : int:
 	get: return get_member(&"width")
 	set(v): set_member(&"width", v)
 
-var fields : Array:
+var fields : Array[RosSensorMsgsPointField]:
 	get: return get_member(&"fields")
 	set(v): set_member(&"fields", v)
 

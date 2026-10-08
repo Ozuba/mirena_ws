@@ -7,7 +7,7 @@ func _init():
 	init(ROS_TYPE_NAME)
 
 var header : RosStdMsgsHeader:
-	get: return get_member(&"header") as RosMsg
+	get: return get_member(&"header")
 	set(v): set_member(&"header", v)
 
 var height : int:
@@ -47,6 +47,6 @@ var binning_y : int:
 	set(v): set_member(&"binning_y", v)
 
 var roi : RosSensorMsgsRegionOfInterest:
-	get: return get_member(&"roi") as RosMsg
+	get: return get_member(&"roi")
 	set(v): set_member(&"roi", v)
 

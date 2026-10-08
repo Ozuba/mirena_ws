@@ -7,11 +7,11 @@ func _init():
 	init(ROS_TYPE_NAME)
 
 var header : RosStdMsgsHeader:
-	get: return get_member(&"header") as RosMsg
+	get: return get_member(&"header")
 	set(v): set_member(&"header", v)
 
 var status : RosSensorMsgsNavSatStatus:
-	get: return get_member(&"status") as RosMsg
+	get: return get_member(&"status")
 	set(v): set_member(&"status", v)
 
 var latitude : float:

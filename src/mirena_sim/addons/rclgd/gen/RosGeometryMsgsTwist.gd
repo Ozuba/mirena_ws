@@ -7,10 +7,10 @@ func _init():
 	init(ROS_TYPE_NAME)
 
 var linear : RosGeometryMsgsVector3:
-	get: return get_member(&"linear") as RosMsg
+	get: return get_member(&"linear")
 	set(v): set_member(&"linear", v)
 
 var angular : RosGeometryMsgsVector3:
-	get: return get_member(&"angular") as RosMsg
+	get: return get_member(&"angular")
 	set(v): set_member(&"angular", v)
 

@@ -7,8 +7,16 @@ func _init():
 	init(ROS_TYPE_NAME)
 
 var header : RosStdMsgsHeader:
-	get: return get_member(&"header") as RosMsg
+	get: return get_member(&"header")
 	set(v): set_member(&"header", v)
+
+var fl : float:
+	get: return get_member(&"fl")
+	set(v): set_member(&"fl", v)
+
+var fr : float:
+	get: return get_member(&"fr")
+	set(v): set_member(&"fr", v)
 
 var rl : float:
 	get: return get_member(&"rl")

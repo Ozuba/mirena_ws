@@ -13,3 +13,4 @@ var status : int:
 var mission : int:
 	get: return get_member(&"mission")
 	set(v): set_member(&"mission", v)
+

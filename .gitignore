@@ -3,7 +3,6 @@ log/
 build/
 install/
 src/*/install/
-bin/
 lib/
 msg_gen/
 srv_gen/
@@ -68,3 +67,10 @@ testing
 .claude 
 
 core.*
+
+# rclgd: keep the GDExtension descriptor (needed by Godot to load rclgd),
+# ignore any build artifacts placed next to it
+!src/mirena_sim/addons/rclgd/bin/
+src/mirena_sim/addons/rclgd/bin/*
+!src/mirena_sim/addons/rclgd/bin/rclgd.gdextension
+!src/mirena_sim/addons/rclgd/bin/rclgd.gdextension.uid

@@ -7,6 +7,10 @@
   <maintainer email="miguelozubas@gmail.com">Ozuba</maintainer>
   <license>MIT</license>
   <buildtool_depend>rclgd</buildtool_depend>
+
+  <depend>mirena_common</depend>
+  <depend>sensor_msgs</depend>
+
   <export>
 	<build_type>rclgd</build_type>
   </export>

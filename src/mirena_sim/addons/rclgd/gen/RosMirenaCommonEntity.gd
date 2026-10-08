@@ -7,7 +7,7 @@ func _init():
 	init(ROS_TYPE_NAME)
 
 var position : RosGeometryMsgsPoint:
-	get: return get_member(&"position") as RosMsg
+	get: return get_member(&"position")
 	set(v): set_member(&"position", v)
 
 var type : String:

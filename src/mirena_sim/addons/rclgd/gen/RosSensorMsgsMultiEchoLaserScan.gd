@@ -7,7 +7,7 @@ func _init():
 	init(ROS_TYPE_NAME)
 
 var header : RosStdMsgsHeader:
-	get: return get_member(&"header") as RosMsg
+	get: return get_member(&"header")
 	set(v): set_member(&"header", v)
 
 var angle_min : float:
@@ -38,11 +38,11 @@ var range_max : float:
 	get: return get_member(&"range_max")
 	set(v): set_member(&"range_max", v)
 
-var ranges : Array:
+var ranges : Array[RosSensorMsgsLaserEcho]:
 	get: return get_member(&"ranges")
 	set(v): set_member(&"ranges", v)
 
-var intensities : Array:
+var intensities : Array[RosSensorMsgsLaserEcho]:
 	get: return get_member(&"intensities")
 	set(v): set_member(&"intensities", v)
 

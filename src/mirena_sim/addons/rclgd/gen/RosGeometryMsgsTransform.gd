@@ -7,10 +7,10 @@ func _init():
 	init(ROS_TYPE_NAME)
 
 var translation : RosGeometryMsgsVector3:
-	get: return get_member(&"translation") as RosMsg
+	get: return get_member(&"translation")
 	set(v): set_member(&"translation", v)
 
 var rotation : RosGeometryMsgsQuaternion:
-	get: return get_member(&"rotation") as RosMsg
+	get: return get_member(&"rotation")
 	set(v): set_member(&"rotation", v)
 

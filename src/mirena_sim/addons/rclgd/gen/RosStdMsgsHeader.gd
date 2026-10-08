@@ -7,7 +7,7 @@ func _init():
 	init(ROS_TYPE_NAME)
 
 var stamp : RosBuiltinInterfacesTime:
-	get: return get_member(&"stamp") as RosMsg
+	get: return get_member(&"stamp")
 	set(v): set_member(&"stamp", v)
 
 var frame_id : String:

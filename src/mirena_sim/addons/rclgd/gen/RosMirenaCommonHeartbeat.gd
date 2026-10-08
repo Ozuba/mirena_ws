@@ -7,7 +7,7 @@ func _init():
 	init(ROS_TYPE_NAME)
 
 var timestamp : RosBuiltinInterfacesTime:
-	get: return get_member(&"timestamp") as RosMsg
+	get: return get_member(&"timestamp")
 	set(v): set_member(&"timestamp", v)
 
 var node_name : String:

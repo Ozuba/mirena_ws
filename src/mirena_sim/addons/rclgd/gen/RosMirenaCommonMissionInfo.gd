@@ -21,3 +21,4 @@ var cones_count_total : int:
 var lap_counter : int:
 	get: return get_member(&"lap_counter")
 	set(v): set_member(&"lap_counter", v)
+

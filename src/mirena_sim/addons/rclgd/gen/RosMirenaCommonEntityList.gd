@@ -7,10 +7,10 @@ func _init():
 	init(ROS_TYPE_NAME)
 
 var header : RosStdMsgsHeader:
-	get: return get_member(&"header") as RosMsg
+	get: return get_member(&"header")
 	set(v): set_member(&"header", v)
 
-var entities : Array:
+var entities : Array[RosMirenaCommonEntity]:
 	get: return get_member(&"entities")
 	set(v): set_member(&"entities", v)
 

@@ -7,10 +7,10 @@ func _init():
 	init(ROS_TYPE_NAME)
 
 var header : RosStdMsgsHeader:
-	get: return get_member(&"header") as RosMsg
+	get: return get_member(&"header")
 	set(v): set_member(&"header", v)
 
-var gates : Array:
+var gates : Array[RosMirenaCommonGate]:
 	get: return get_member(&"gates")
 	set(v): set_member(&"gates", v)
 
