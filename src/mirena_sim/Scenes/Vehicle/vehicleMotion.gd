@@ -257,10 +257,9 @@ func _process_no_pilot() -> void:
 
 func _process_manual_pilot(delta: float) -> void:
 	var steer_input = Input.get_action_strength("manual_steer_l") - Input.get_action_strength("manual_steer_r")
-	_steer_smoothed = _smooth_steer(_steer_smoothed, steer_input, delta, 2.0)
 	
 	self.gas = Input.get_action_strength("manual_gas_pos") - Input.get_action_strength("manual_gas_neg")
-	self.steering = _steer_smoothed * MAX_STEER
+	self.steering = steer_input * MAX_STEER
 	self.brake = Input.get_action_strength("EBS") * BRAKE_F
 
 func _process_ros_pilot() -> void:
